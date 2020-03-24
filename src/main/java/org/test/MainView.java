@@ -4,12 +4,14 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.server.PWA;
+import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.theme.material.Material;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-/**
- * The main view contains a button and a click listener.
- */
 @Route
+@PageTitle("JavaCalc")
+@Theme(value = Material.class, variant = Material.DARK)
 @PWA(name = "JavaCalc", shortName = "JCalc")
 public class MainView extends VerticalLayout {
 

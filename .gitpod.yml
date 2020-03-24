@@ -1,0 +1,7 @@
+ports:
+  - port: 37841
+    onOpen: ignore
+  - port: 8080
+    onOpen: open-preview
+tasks:
+  - command: mvn
