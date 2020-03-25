@@ -143,9 +143,9 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>2.0.13</version>
                 <configuration>
-                    <appName>Java-Calc</appName>
+                    <appName>java-calc</appName>
                     <processTypes>
-                        <web>java $JAVA_OPTS -jar target/vaadin-heroku-2.0-SNAPSHOT.jar --server.port=$PORT</web>
+                        <web>java $JAVA_OPTS -jar target/vaadin-heroku-1.0-SNAPSHOT.jar --server.port=$PORT</web>
                     </processTypes>
                 </configuration>
             </plugin>
