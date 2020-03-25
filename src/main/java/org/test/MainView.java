@@ -13,13 +13,13 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
-import com.vaadin.flow.theme.material.Material;
+import com.vaadin.flow.theme.lumo.*;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route
 @PageTitle("JavaCalc")
-@Theme(value = Material.class, variant = Material.DARK)
+@Theme(value = Lumo.class, variant = Lumo.DARK)
 @PWA(name = "JavaCalc", shortName = "JCalc")
 public class MainView extends AppLayout {
 
@@ -47,6 +47,7 @@ public class MainView extends AppLayout {
 
     public VerticalLayout createSpeedLayout() {
         VerticalLayout layout = new VerticalLayout();
+        layout.setSizeFull();
         TextField timeField = new TextField("Time");
         TextField distancField = new TextField("Distance");
         Button submitButton = new Button("Submit", new Icon(VaadinIcon.ARROW_RIGHT), event -> {
