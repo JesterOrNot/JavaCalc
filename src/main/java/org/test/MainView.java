@@ -3,6 +3,7 @@ package org.test;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
@@ -47,34 +48,52 @@ public class MainView extends AppLayout {
 
     public VerticalLayout createSpeedLayout() {
         VerticalLayout layout = new VerticalLayout();
-        layout.setSizeFull();
+        Paragraph title = new Paragraph("Speed Calculator");
         TextField timeField = new TextField("Time");
         TextField distancField = new TextField("Distance");
         Button submitButton = new Button("Submit", new Icon(VaadinIcon.ARROW_RIGHT), event -> {
-            double distance = Double.parseDouble(distancField.getValue());
-            double time = Double.parseDouble(timeField.getValue());
+            double distance = parseDouble(distancField.getValue());
+            double time = parseDouble(timeField.getValue());
             double speed = distance / time;
             Notification.show("Speed: " + Double.toString(speed), 3000, Position.BOTTOM_END);
             timeField.clear();
             distancField.clear();
         });
         submitButton.setIconAfterText(true);
-        layout.add(distancField, timeField, submitButton);
+        layout.add(title, distancField, timeField, submitButton);
         return layout;
     }
 
     public VerticalLayout createQuadraticLayout() {
         VerticalLayout layout = new VerticalLayout();
+        Paragraph title = new Paragraph("Quadratic Equation Calculator");
         TextField aField = new TextField("A");
         TextField bField = new TextField("B");
         TextField cField = new TextField("C");
         Button submitButton = new Button("Submit", new Icon(VaadinIcon.ARROW_RIGHT), event -> {
+            double a = parseDouble(aField.getValue());
+            double b = parseDouble(bField.getValue());
+            double c = parseDouble(cField.getValue());
+            double[] awnser = quadraticEquation(a, b, c);
+            String x1 = Double.toString(awnser[0]);
+            String x2 = Double.toString(awnser[1]);
+            String finalAwnser = "(" + x1 + ", " + x2 + ")";
+            Notification.show("Awnser: " + finalAwnser, 3000, Position.BOTTOM_END);
             aField.clear();
             bField.clear();
             cField.clear();
         });
         submitButton.setIconAfterText(true);
-        layout.add(aField, bField, cField, submitButton);
+        layout.add(title, aField, bField, cField, submitButton);
         return layout;
+    }
+
+    public double[] quadraticEquation(double a, double b, double c) {
+        return new double[] { (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / 2 * a,
+                (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / 2 * a };
+    }
+
+    public double parseDouble(String str) {
+        return Double.parseDouble(str);
     }
 }
