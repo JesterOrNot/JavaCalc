@@ -3,6 +3,7 @@ package org.test;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -27,7 +28,10 @@ public class MainView extends AppLayout {
     private Tabs appTabs = new Tabs(new Tab("Quadratic"), new Tab("Speed"));
 
     public MainView() {
-        addToNavbar(true, new DrawerToggle());
+        Image img = new Image("https://raw.githubusercontent.com/jesterornot/javacalc/2a20faeb8fe541084e64fb5bf15e21aa940ebbd9/src/main/webapp/icons/icon.png", "Vaadin Logo");
+        img.setHeight("22px");
+        img.setWidth("22px");
+        addToNavbar(true, new DrawerToggle(), img);
         this.appTabs.setOrientation(Tabs.Orientation.HORIZONTAL);
         addToDrawer(this.appTabs);
         setContent(selectLayout());
@@ -49,8 +53,8 @@ public class MainView extends AppLayout {
     public VerticalLayout createSpeedLayout() {
         VerticalLayout layout = new VerticalLayout();
         Paragraph title = new Paragraph("Speed Calculator");
-        TextField timeField = new TextField("Time");
-        TextField distancField = new TextField("Distance");
+        TextField timeField = new TextField("Time (seconds)");
+        TextField distancField = new TextField("Distance (meters)");
         Button submitButton = new Button("Submit", new Icon(VaadinIcon.ARROW_RIGHT), event -> {
             double distance = parseDouble(distancField.getValue());
             double time = parseDouble(timeField.getValue());
