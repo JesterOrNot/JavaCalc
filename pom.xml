@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.test</groupId>
@@ -17,7 +17,7 @@
 
     <repositories>
         <!-- The order of definitions matters. Explicitly defining central here to make sure it has the highest priority. -->
-       
+
         <!-- Main Maven repository -->
         <repository>
             <id>central</id>
@@ -42,7 +42,7 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-        </pluginRepository>        
+        </pluginRepository>
     </pluginRepositories>
     <dependencyManagement>
         <dependencies>
@@ -115,6 +115,23 @@
                 <version>9.4.15.v20190215</version>
                 <configuration>
                     <scanIntervalSeconds>1</scanIntervalSeconds>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <version>1.9.1</version>
+                <executions>
+                <execution>
+                            <id>install node and npm</id>
+                    <goals>
+                        <goal>install-node-and-npm</goal>
+                    </goals>
+                    <phase>generate-resources</phase>
+                </execution>
+                </executions>
+                <configuration>
+                <nodeVersion>v10.16.2</nodeVersion>
                 </configuration>
             </plugin>
 
