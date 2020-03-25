@@ -28,7 +28,7 @@ public class MainView extends AppLayout {
     private Tabs appTabs = new Tabs(new Tab("Quadratic"), new Tab("Speed"));
 
     public MainView() {
-        Image img = new Image("https://raw.githubusercontent.com/jesterornot/javacalc/2a20faeb8fe541084e64fb5bf15e21aa940ebbd9/src/main/webapp/icons/icon.png", "Vaadin Logo");
+        Image img = new Image("https://raw.githubusercontent.com/jesterornot/javacalc/2a20faeb8fe541084e64fb5bf15e21aa940ebbd9/src/main/webapp/icons/icon.png", "JavaCalc Logo");
         img.setHeight("22px");
         img.setWidth("22px");
         addToNavbar(true, new DrawerToggle(), img);
