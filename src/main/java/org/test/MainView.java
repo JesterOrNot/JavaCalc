@@ -8,7 +8,6 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.Notification.Position;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.Viewport;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
@@ -19,7 +18,6 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route
-@Viewport("width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes, viewport-fit=cover")
 @PageTitle("JavaCalc")
 @Theme(value = Material.class, variant = Material.DARK)
 @PWA(name = "JavaCalc", shortName = "JCalc")
@@ -52,10 +50,10 @@ public class MainView extends AppLayout {
         TextField timeField = new TextField("Time");
         TextField distancField = new TextField("Distance");
         Button submitButton = new Button("Submit", new Icon(VaadinIcon.ARROW_RIGHT), event -> {
-            int distance = Integer.parseInt(distancField.getValue());
-            int time = Integer.parseInt(timeField.getValue());
-            int speed = distance / time;
-            Notification.show("Speed: " + Integer.toString(speed), 3000, Position.BOTTOM_END);
+            double distance = Double.parseDouble(distancField.getValue());
+            double time = Double.parseDouble(timeField.getValue());
+            double speed = distance / time;
+            Notification.show("Speed: " + Double.toString(speed), 3000, Position.BOTTOM_END);
             timeField.clear();
             distancField.clear();
         });
