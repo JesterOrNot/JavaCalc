@@ -40,6 +40,9 @@ public class MainView extends AppLayout {
         });
     }
 
+    /**
+     * Selects the right calculator based on program state
+     */
     public VerticalLayout selectLayout() {
         switch (this.appTabs.getSelectedIndex()) {
         case 0:
@@ -50,6 +53,9 @@ public class MainView extends AppLayout {
         return null;
     }
 
+    /**
+     * Creates the UI for the Speed calculator
+     */
     public VerticalLayout createSpeedLayout() {
         VerticalLayout layout = new VerticalLayout();
         Paragraph title = new Paragraph("Speed Calculator");
@@ -68,6 +74,9 @@ public class MainView extends AppLayout {
         return layout;
     }
 
+    /**
+     * Creates the UI for the quadratic calculator
+     */
     public VerticalLayout createQuadraticLayout() {
         VerticalLayout layout = new VerticalLayout();
         Paragraph title = new Paragraph("Quadratic Equation Calculator");
@@ -92,11 +101,18 @@ public class MainView extends AppLayout {
         return layout;
     }
 
+    /**
+     * This performs the quadratic equation
+     */
     public double[] quadraticEquation(double a, double b, double c) {
         return new double[] { (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / 2 * a,
                 (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / 2 * a };
     }
 
+    /**
+     * @param str takes a str and makes it a double
+     * @apiNote This is a simple wrapper function around Double.parseDouble() -- I'm lazy :)
+     */
     public double parseDouble(String str) {
         return Double.parseDouble(str);
     }
