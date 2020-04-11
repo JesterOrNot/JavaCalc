@@ -25,7 +25,7 @@ import com.vaadin.flow.router.Route;
 @PWA(name = "JavaCalc", shortName = "JCalc")
 public class MainView extends AppLayout {
 
-    private Tabs appTabs = new Tabs(new Tab("Quadratic"), new Tab("Speed"));
+    private Tabs appTabs = new Tabs(new Tab("Quadratic"), new Tab("Speed"), new Tab("Logarithm"));
 
     public MainView() {
         Image img = new Image("https://raw.githubusercontent.com/jesterornot/javacalc/2a20faeb8fe541084e64fb5bf15e21aa940ebbd9/src/main/webapp/icons/icon.png", "JavaCalc Logo");
@@ -49,6 +49,8 @@ public class MainView extends AppLayout {
             return createQuadraticLayout();
         case 1:
             return createSpeedLayout();
+        case 2:
+            return createLogarithmicLayout();
         }
         return null;
     }
@@ -100,6 +102,28 @@ public class MainView extends AppLayout {
         layout.add(title, aField, bField, cField, submitButton);
         return layout;
     }
+
+    /**
+     * Creates the UI for the quadratic calculator
+     */
+    public VerticalLayout createLogarithmicLayout() {
+        VerticalLayout layout = new VerticalLayout();
+        Paragraph title = new Paragraph("Logarithm Calculator");
+        TextField baseField = new TextField("Base");
+        TextField numField = new TextField("Number");
+        Button submitButton = new Button("Submit", new Icon(VaadinIcon.ARROW_RIGHT), event -> {
+            double base = parseDouble(baseField.getValue());
+            double number = parseDouble(numField.getValue());
+            double awnser = Math.log(number) / Math.log(base);
+            Notification.show("Awnser: " + awnser, 3000, Position.BOTTOM_END);
+            numField.clear();
+            baseField.clear();
+        });
+        submitButton.setIconAfterText(true);
+        layout.add(title, baseField, numField, submitButton);
+        return layout;
+    }
+
 
     /**
      * This performs the quadratic equation
